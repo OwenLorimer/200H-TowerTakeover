@@ -5,11 +5,8 @@
 /*                          For use by: Team 200H                             */
 /*                            Revisions made by:                              */
 /*                                                                            */
-/*    About: An extremely simple library for the abstraction of the standard  */
-/*           VEX V5 controller. For others who might wish to use this library,*/
-/*           if you make any revisions or improve the library please test and */
-/*           redistribute the library for others to use. Make sure to add     */
-/*           your name to the 'Revisions made by:' field.                     */
+/*    About: rlly simple "library" lol right.. for abstraction of a standard  */
+/*           VEX V5 controller.                                               */
 /*----------------------------------------------------------------------------*/
 
 // Macro guards to prevent recursive includes.
