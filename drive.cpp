@@ -5,12 +5,9 @@
 /*                          For use by: Team 200H                             */
 /*                            Revisions made by:                              */
 /*                                                                            */
-/*    About: An extremely simple file for the abstraction of a standard 4     */
-/*           motor V5 mechanum drive. Gyroscope code still needs to be added  */
-/*           to implement field-oriented control. For others who might want   */
-/*           to use this file,if you make any revisions or improvements,      */
-/*           please test and redistribute for others to use. Make sure to add */
-/*           your name to the 'Revisions made by:' field.                     */
+/*    About: Simple abstraction of a standard 4 motor V5 mecanum drive.       */
+/*           Gyroscope code still needs to be added to implement              */
+/*           field-oriented control.                                          */
 /*----------------------------------------------------------------------------*/
 // Macro guards
 #ifndef _DRIVE_
