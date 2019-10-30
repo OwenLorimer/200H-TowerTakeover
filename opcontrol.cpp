@@ -8,6 +8,7 @@
 #define DBR_PRT 19
 #define LL_PRT 5
 #define LR_PRT 6
+#define LC_PRT 7
 #define LIFTLIM_PRT 1
 
 //Controller ctrl1 uses master
@@ -19,6 +20,7 @@ pros::Motor dFr(20);
 //Back Right drive motor is reversed
 pros::Motor dBr(19, true);
 pros::Motor liftL(5);
+pros::Motor liftClaw(7);
 //Right side lift motor is reversed
 pros::Motor liftR(6, true);
 pros::ADIButton liftLim('A');
