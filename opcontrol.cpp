@@ -28,7 +28,7 @@ pros::ADIGyro gyro('B');
 
 
 void opcontrol(){
-	LiftInit(ctrl1, LL_PRT, LR_PRT, LIFTLIM_PRT);
+	LiftInit(ctrl1, LL_PRT, LR_PRT, LIFTLIM_PRT, LC_PRT);
 	MecanumDriveInit(ctrl1, DFL_PRT, DBL_PRT, DFR_PRT, DBR_PRT);
 	while (true){
 		rcLiftInput();
