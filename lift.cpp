@@ -29,7 +29,7 @@ struct RobotLift{
 
 static RobotLift l1;
 
-void LiftInit(pros::Controller rcName, int ml, int mr, int bumper, mClaw){
+void LiftInit(pros::Controller rcName, int ml, int mr, int bumper, int mClaw){
   l1.liftL = new pros::Motor (ml);
   l1.liftR = new pros::Motor (mr);
   l1.liftClaw = new pros::Motor (mClaw);
@@ -41,7 +41,9 @@ void lift(int x){
   l1.liftL->move(x);
   l1.liftR->move(x);
 }
-
+void liftClaw(int x){
+  l1.liftClaw->move(x);
+}
 void liftTare(){
 	l1.liftL->tare_position();
 	l1.liftR->tare_position();
@@ -55,58 +57,38 @@ void liftBrake(){
 	l1.liftR->set_brake_mode(MOTOR_BRAKE_HOLD);
 }
 
-void liftReset(){
-  l1.rcLift.rumble(". .");
-  while(l1.liftState != 1){
-	  lift(-20);
-    pros::delay(25);
-  }
-}
 
-
-void runLift(int isRetracted, float liftPos){
-	
-  if(liftPos < 1440 && l1.liftState != 1){
-    if(rcGDV(l1.rcLift, R1)){
-      lift(127);
+void runLift(){
+	 
+  if(rcGDV(l1.rcLift, R1)){
+    lift(127);
     }
-    else if(rcGDV(l1.rcLift, R2)){
-      lift(-127);
+  else if(rcGDV(l1.rcLift, R2)){
+    lift(-127);
     }
-    else{
-      liftBrake();
-    }
-  }
-  else if(liftPos > 1440 && l1.liftState != 1){
-    liftReset();
-  }
-  else if(liftPos < 1440 && l1.liftState == 1){
-    liftTare();
-    if(rcGDV(l1.rcLift, R1)){
-      lift(127);
-    }
-  }
+  else{
+    liftBrake();
+    } 
   else{
     liftTare();
   }
-if (rcGDV(l1.rcLift, L1)){
-  l1.liftClaw->move(127);
+}
+
+void runClaw(){
+	
+  if (rcGDV(l1.rcLift, L1)){
+    l1.liftClaw->move(127);
+  }
+	
+  else if (rcGDV(l1.rcLift, L2)){
+    l1.liftClaw->move(-127);
+  }
+
+  else{
+    l1.liftClaw->move_velocity(0);
+    l1.liftClaw->set_brake_mode(MOTOR_BRAKE_HOLD);
+  }
 }
 	
-else if (rcGDV(l1.rcLift, L2)){
-   l1.liftClaw->move(-127);
-}
-
-else{
-   l1.liftClaw->move(0);
-}
-
-	
-void rcLiftInput(){
-  l1.liftState = l1.liftLim->get_value();
-  float liftPos = fabs(((l1.liftL->get_position() + l1.liftR->get_position())/2));
-
-  runLift(l1.liftState, liftPos);
-}
 
 #endif
